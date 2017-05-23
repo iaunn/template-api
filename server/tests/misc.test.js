@@ -14,7 +14,7 @@ describe('## Misc', () => {
         .get('/api/ping')
         .expect(httpStatus.OK)
         .then((res) => {
-          expect(res.text).to.equal('OK')
+          expect(res.text).to.equal('pong')
           done()
         })
         .catch(done)

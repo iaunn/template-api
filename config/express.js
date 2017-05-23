@@ -16,8 +16,7 @@ const APIError = require('../server/helpers/APIError')
 
 const app = express()
 
-if (config.env === 'development') {
-  app.use(logger('dev'))
+if (config.env === 'development') { app.use(logger('dev'))
 }
 
 // parse body params and attache them to req.body
@@ -53,7 +52,6 @@ app.use('/api', routes)
 
 // if error is not an instanceOf APIError, convert it.
 app.use((err, req, res, next) => {
-  console.error(err)
   if (err instanceof expressValidation.ValidationError) {
     // validation error contains errors which is an array of error each containing message[]
     const unifiedErrorMessage = err.errors.map(error => error.messages.join('. ')).join(' and ')
@@ -84,7 +82,6 @@ app.use((err, req, res, next) => // eslint-disable-line no-unused-vars
 res.status(err.status).json({
   message: err.isPublic ? err.message : httpStatus[err.status],
   stack: config.env === 'development' ? err.stack : {}
-})
-)
+}))
 
 module.exports = app

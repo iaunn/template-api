@@ -1,3 +1,4 @@
+/* no-global-assign Promise */
 const mongoose = require('mongoose')
 const util = require('util')
 
@@ -5,7 +6,7 @@ const util = require('util')
 const config = require('./config/config')
 const app = require('./config/express')
 
-const debug = require('debug')('express-mongoose-es6-rest-api:index')
+const debug = require('debug')('template-api:index')
 
 // make bluebird default Promise
 Promise = require('bluebird') // eslint-disable-line no-global-assign
@@ -32,7 +33,7 @@ if (config.MONGOOSE_DEBUG) {
 if (!module.parent) {
   // listen on port config.port
   app.listen(config.port, () => {
-    console.info(`server started on port ${config.port} (${config.env})`) // eslint-disable-line no-console
+    console.info(`server started on port ${config.port} (${config.env})`)
   })
 }
 
