@@ -14,6 +14,7 @@ class ExtendableError extends Error {
     if (message instanceof Error) {
       this.stack = message.stack
       this.message = message.message
+      this.status = message.status
     }
   }
 }

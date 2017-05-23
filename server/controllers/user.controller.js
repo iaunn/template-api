@@ -1,3 +1,4 @@
+const APIError = require('../helpers/APIError')
 const User = require('../models/user.model')
 
 /**
@@ -9,7 +10,7 @@ function load (req, res, next, id) {
       req.user = user
       return next()
     })
-    .catch(e => next(e))
+    .catch(e => next(new APIError(e)))
 }
 
 /**
@@ -34,7 +35,7 @@ function create (req, res, next) {
 
   user.save()
     .then(savedUser => res.json(savedUser))
-    .catch(e => next(e))
+    .catch(e => next(new APIError(e)))
 }
 
 /**
@@ -50,7 +51,7 @@ function update (req, res, next) {
 
   user.save()
     .then(savedUser => res.json(savedUser))
-    .catch(e => next(e))
+    .catch(e => next(new APIError(e)))
 }
 
 /**
@@ -66,7 +67,7 @@ function list (req, res, next) {
     skip
   })
     .then(users => res.json(users))
-    .catch(e => next(e))
+    .catch(e => next(new APIError(e)))
 }
 
 /**
@@ -77,7 +78,7 @@ function remove (req, res, next) {
   const user = req.user
   user.remove()
     .then(deletedUser => res.json(deletedUser))
-    .catch(e => next(e))
+    .catch(e => next(new APIError(e)))
 }
 
 module.exports = {
