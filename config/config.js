@@ -31,6 +31,7 @@ if (error) {
 const config = {
   env: envVars.NODE_ENV,
   port: envVars.PORT,
+  bindIp: envVars.BIND_IP,
   mongooseDebug: envVars.MONGOOSE_DEBUG,
   mongo: {
     host: envVars.MONGO_HOST,
